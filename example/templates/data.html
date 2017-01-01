@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% block pagecontent %}
+      <div class="table-div">
+      <!-- We will display our data in a normal HTML table using Django's
+      template for-loop to generate our table rows for us-->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>DATA</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for celebrity in data %}
+            <tr>
+              <td>{{ celebrity.name }}</td>
+              <td>$ {{ celebrity.worth | intcomma }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+     </div>
+    {% include 'partials/nav-bar.html' %}
+    {% endblock %}
+  </body>
+</html>
